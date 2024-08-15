@@ -1,7 +1,6 @@
 
 import java.util.ArrayList;
 
-
 public class pilhaaritmetica {
     Integer topoindex = -1;
     ArrayList<Character> dado = new ArrayList<>();
@@ -22,20 +21,32 @@ public class pilhaaritmetica {
         if (desisto == '{' || desisto == '(' || desisto == '[') {
             this.dado.add(desisto);
             this.topoindex++;
-        }else{
-            switch(desisto){
+        } else {
+            switch (desisto) {
                 case '}':
-                    if (topo() == '{'){this.desempilha();}
+                    if (topo() == '{') {
+                        this.desempilha();
+                    } else {
                         this.dado.add(desisto);
-                        break;
+                        this.topoindex++;
+                    }
+                    break;
                 case ')':
-                    if (topo() == '('){this.desempilha();}
+                    if (topo() == '(') {
+                        this.desempilha();
+                    } else {
                         this.dado.add(desisto);
-                        break;
+                        this.topoindex++;
+                    }
+                    break;
                 case ']':
-                    if (topo() == '['){this.desempilha();}
+                    if (topo() == '[') {
+                        this.desempilha();
+                    } else {
                         this.dado.add(desisto);
-                        break;
+                        this.topoindex++;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -50,33 +61,33 @@ public class pilhaaritmetica {
             this.topoindex--;
         }
     }
-        public void flush() {
-        while (topoindex != -1) {
+
+    public void flush() {
+        while (topoindex >= 0) {
             desempilha();
-            }
         }
-        
-        public void check(){
-        if(this.vazia() == 1){
+    }
+
+    public void check() {
+        if (this.vazia() == 1) {
             System.out.println("Expressão boa.");
-        } else{
+        } else {
             System.out.println("Expressão ruim.");
         }
-        }
-    
-    
-    public static void main(String[] args){
+    }
+
+    public static void main(String[] args) {
         pilhaaritmetica stack = new pilhaaritmetica();
         String expressaoBoa = "(A + B) + C + { B * [C + B]}";
         String expressaoRuim = "(A + B { D  + C}])";
-    
-        for(int i = 0; i < expressaoBoa.length(); i++){
+
+        for (int i = 0; i < expressaoBoa.length(); i++) {
             char c = expressaoBoa.charAt(i);
             stack.empilha(c);
         }
-        stack.check();   
+        stack.check();
         stack.flush();
-        for(int i = 0; i < expressaoRuim.length(); i++){
+        for (int i = 0; i < expressaoRuim.length(); i++) {
             char c = expressaoRuim.charAt(i);
             stack.empilha(c);
         }
