@@ -69,7 +69,7 @@ public class lista_encadeada {
     public int retira_primeiro() {  // Retira o primeiro elemento da Lista e retorna o valor da info do Nó
         if (vazia()) {
             System.out.println("Lista vazia, não há elementos para remover.");
-            return -1; // Indicativo de lista vazia
+            return -1;
         }
         int valor = head.data;
         head = head.next;
