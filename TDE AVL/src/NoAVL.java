@@ -4,7 +4,6 @@ public class NoAVL {
     int altura;
     int valor;
 
-
     public NoAVL(int valor) {
         this.valor = valor;
     }

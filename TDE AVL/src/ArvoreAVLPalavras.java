@@ -1,9 +1,6 @@
 class ArvoreAVLPalavras {
     NoAVLPalavra raiz;
 
-
-
-
     // inserir ou atualizar uma palavra
     NoAVLPalavra insereElemento(NoAVLPalavra no, String palavra) {
         if (no == null) {
@@ -72,7 +69,7 @@ class ArvoreAVLPalavras {
         return altura(no.esquerdo) - altura(no.direito);
     }
 
-    // Funções de rotação (iguais às da parte I)
+    // Funções de rotação (igual da parte I)
     NoAVLPalavra rotacaoDireita(NoAVLPalavra y) {
         NoAVLPalavra x = y.esquerdo;
         NoAVLPalavra T2 = x.direito;
