@@ -5,11 +5,13 @@ public class Main {
 
         lista1.insere_ultimo(1);
         lista1.insere_ultimo(2);
-        lista1.insere_ultimo(3);
+        lista1.insere_ultimo(250);
+        lista1.insere_ultimo(4);
 
         lista2.insere_ultimo(2);
         lista2.insere_ultimo(3);
         lista2.insere_ultimo(4);
+        lista2.insere_ultimo(5);
 
         // Similaridade do cosseno
         double similaridade = CalculadoraSimilaridade.similaridadeCosseno(lista1, lista2);
