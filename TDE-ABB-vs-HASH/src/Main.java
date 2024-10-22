@@ -1,6 +1,6 @@
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,11 +18,16 @@ public class Main {
 
         long startTime, endTime;
 
+        // Arrays para armazenar chaves inseridas
+        int[] bstKeys = new int[dataSize];
+        int[] htKeys = new int[dataSize];
+
         // Tempo de inserção na ABB
         startTime = System.nanoTime();
         for (int i = 0; i < dataSize; i++) {
             int key = rand.nextInt(Integer.MAX_VALUE);
             bst.insert(key);
+            bstKeys[i] = key; // Armazenar chave inserida
         }
         endTime = System.nanoTime();
         long bstInsertTime = endTime - startTime;
@@ -32,32 +37,26 @@ public class Main {
         for (int i = 0; i < dataSize; i++) {
             int key = rand.nextInt(Integer.MAX_VALUE);
             ht.insert(key);
+            htKeys[i] = key; // Armazenar chave inserida
         }
         endTime = System.nanoTime();
         long htInsertTime = endTime - startTime;
 
-        // Gerar chaves aleatórias para busca
-        int[] searchKeys = new int[dataSize];
-        for (int i = 0; i < dataSize; i++) {
-            searchKeys[i] = rand.nextInt(Integer.MAX_VALUE);
-        }
-
         // Tempo de busca na ABB
         startTime = System.nanoTime();
-        for (int key : searchKeys) {
-            bst.search(key);
+        for (int key : bstKeys) {
+            bst.search(key); // Usar chaves inseridas para busca
         }
         endTime = System.nanoTime();
         long bstSearchTime = endTime - startTime;
 
         // Tempo de busca na Tabela Hash
         startTime = System.nanoTime();
-        for (int key : searchKeys) {
-            ht.search(key);
+        for (int key : htKeys) {
+            ht.search(key); // Usar chaves inseridas para busca
         }
         endTime = System.nanoTime();
         long htSearchTime = endTime - startTime;
-
 
         double bstInsertTimeInSeconds = bstInsertTime / 1_000_000_000.0;
         double htInsertTimeInSeconds = htInsertTime / 1_000_000_000.0;
