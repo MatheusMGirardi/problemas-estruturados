@@ -18,33 +18,34 @@ public class Main {
 
         long startTime, endTime;
 
-        // Arrays para armazenar chaves inseridas
-        int[] bstKeys = new int[dataSize];
-        int[] htKeys = new int[dataSize];
+
+        int[] Keys = new int[dataSize];
+
+        for (int i = 0; i < dataSize; i++){
+            int key = rand.nextInt(Integer.MAX_VALUE);
+            Keys[i] = key;
+        }
 
         // Tempo de inserção na ABB
         startTime = System.nanoTime();
-        for (int i = 0; i < dataSize; i++) {
-            int key = rand.nextInt(Integer.MAX_VALUE);
+        for (int key : Keys){
             bst.insert(key);
-            bstKeys[i] = key; // Armazenar chave inserida
+             // Armazenar chave inserida
         }
         endTime = System.nanoTime();
         long bstInsertTime = endTime - startTime;
 
         // Tempo de inserção na Tabela Hash
         startTime = System.nanoTime();
-        for (int i = 0; i < dataSize; i++) {
-            int key = rand.nextInt(Integer.MAX_VALUE);
+        for (int key : Keys) {
             ht.insert(key);
-            htKeys[i] = key; // Armazenar chave inserida
         }
         endTime = System.nanoTime();
         long htInsertTime = endTime - startTime;
 
         // Tempo de busca na ABB
         startTime = System.nanoTime();
-        for (int key : bstKeys) {
+        for (int key : Keys) {
             bst.search(key); // Usar chaves inseridas para busca
         }
         endTime = System.nanoTime();
@@ -52,7 +53,7 @@ public class Main {
 
         // Tempo de busca na Tabela Hash
         startTime = System.nanoTime();
-        for (int key : htKeys) {
+        for (int key : Keys) {
             ht.search(key); // Usar chaves inseridas para busca
         }
         endTime = System.nanoTime();

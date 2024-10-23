@@ -1,10 +1,10 @@
-import java.util.*;
+import java.util.LinkedList;
 
 class HashTable {
     private int BUCKETS;
     private LinkedList<Integer>[] table;
 
-    @SuppressWarnings("unchecked")
+
     public HashTable(int size) {
         BUCKETS = size;
         table = new LinkedList[BUCKETS];
@@ -24,8 +24,14 @@ class HashTable {
         }
     }
 
-    public boolean search(int key) {
+    public Integer search(int key) {
         int bucket = hash(key);
-        return table[bucket].contains(key);
+        for (Integer element : table[bucket]) {
+            if (element == key) {
+                return element;
+            }
+        }
+        return null;
     }
+
 }
